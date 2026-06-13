@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Trilla Banks</title>
-<meta name="description" content="Trilla Banks â Musician Â· Toronto">
+<meta name="description" content="Trilla Banks — Musician · Toronto">
 <meta property="og:title" content="Trilla Banks">
-<meta property="og:description" content="Musician Â· Toronto">
+<meta property="og:description" content="Musician · Toronto">
 <style>
 @property --ring-a{syntax:'<angle>';initial-value:0deg;inherits:false}
 @keyframes ring-spin{to{--ring-a:360deg}}
@@ -14,14 +14,13 @@
 @keyframes fadein{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 @keyframes dot-blink{0%,80%,100%{opacity:.1}40%{opacity:.6}}
 @keyframes spin-whole{to{transform:rotate(360deg)}}
-@keyframes hidden-fade{0%{opacity:0}20%{opacity:1}80%{opacity:1}100%{opacity:0}}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html,body{min-height:100%}
 body{background:#000;color:#f0f0f0;font-family:-apple-system,'SF Pro Display',system-ui,sans-serif;min-height:100vh;position:relative;overflow-x:hidden}
 body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.18;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.018;background-image:linear-gradient(rgba(255,255,255,.8) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.8) 1px,transparent 1px);background-size:32px 32px}
 .scan{position:fixed;left:0;right:0;height:1px;top:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.05) 30%,rgba(255,255,255,.12) 50%,rgba(255,255,255,.05) 70%,transparent);animation:scan-line 5s linear infinite;pointer-events:none;z-index:998}
-.page{position:relative;z-index:1;max-width:480px;margin:0 auto;padding:52px 20px 48px;min-height:100vh;display:flex;flex-direction:column}
+.page{position:relative;z-index:1;max-width:480px;margin:0 auto;padding:52px 20px 48px;padding-top:max(52px,env(safe-area-inset-top,0px) + 32px);padding-bottom:max(48px,env(safe-area-inset-bottom,0px) + 24px);padding-left:max(20px,env(safe-area-inset-left,0px) + 16px);padding-right:max(20px,env(safe-area-inset-right,0px) + 16px);min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
 .hd{display:flex;flex-direction:column;align-items:center;margin-bottom:32px;animation:fadein .5s 0s both}
 .ring-wrap{position:relative;width:80px;height:80px;margin-bottom:20px;animation:spin-whole 4s linear infinite}
 @media(min-width:600px){.ring-wrap{width:96px;height:96px}}
@@ -30,10 +29,8 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opa
 .ring-avatar{position:absolute;inset:0;border-radius:50%;background:#0a0a0a;border:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center}
 .ring-avatar svg{width:30px;height:30px;opacity:.5;fill:#fff}
 @media(min-width:600px){.ring-avatar svg{width:36px;height:36px}}
-.name{font-size:24px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#fff;line-height:1;margin-bottom:7px;white-space:pre;text-align:center;transition:color .1s,letter-spacing .1s,font-weight .1s,text-shadow .1s}
+.name{font-size:clamp(20px,6vw,24px);font-weight:700;letter-spacing:clamp(2px,1vw,3px);text-transform:uppercase;color:#fff;line-height:1;margin-bottom:7px;white-space:pre;text-align:center;max-width:100%;overflow:hidden}
 @media(min-width:600px){.name{font-size:30px;letter-spacing:4px}}
-.name.hidden-msg{color:rgba(255,255,255,.28);font-weight:700;letter-spacing:6px;text-shadow:0 0 22px rgba(255,255,255,.18);animation:hidden-fade .6s ease-out forwards}
-@media(min-width:600px){.name.hidden-msg{letter-spacing:7px}}
 .sub-name{font-size:8px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.18)}
 @media(min-width:600px){.sub-name{font-size:9px;letter-spacing:6px}}
 .status-row{display:flex;gap:5px;margin-top:14px;align-items:center}
@@ -45,7 +42,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opa
 .rule{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.07) 20%,rgba(255,255,255,.12) 50%,rgba(255,255,255,.07) 80%,transparent);margin:0 0 22px;animation:fadein .5s .05s both}
 .release-wrap{position:relative;margin-bottom:28px;border-radius:12px;animation:fadein .5s .1s both}
 .release-wrap::before{content:'';position:absolute;inset:-1.5px;border-radius:13px;background:conic-gradient(from var(--ring-a),transparent 0%,rgba(255,255,255,.18) 30%,rgba(255,255,255,.55) 50%,rgba(255,255,255,.18) 70%,transparent 100%);animation:ring-spin 4s linear infinite;z-index:0}
-.release{position:relative;z-index:1;padding:16px 18px;border-radius:12px;background:#060606;display:flex;align-items:center;justify-content:space-between;text-decoration:none;color:inherit}
+.release{position:relative;z-index:1;padding:16px 18px;border-radius:12px;background:#060606;display:flex;align-items:center;justify-content:space-between;text-decoration:none;color:inherit;-webkit-tap-highlight-color:transparent}
 @media(min-width:600px){.release{padding:18px 20px}}
 .rel-l{display:flex;flex-direction:column;gap:4px}
 .rel-eyebrow{font-size:7px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);display:flex;align-items:center;gap:6px}
@@ -62,7 +59,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opa
 @media(min-width:600px){.links-stack{display:grid;grid-template-columns:1fr 1fr;gap:8px}}
 .follow-stack{display:flex;flex-direction:column;gap:6px}
 @media(min-width:600px){.follow-stack{display:grid;grid-template-columns:1fr 1fr;gap:8px}.kick-wrap{grid-column:1/-1;display:flex;justify-content:center}.kick-wrap .lnk{width:calc(50% - 4px)}}
-.lnk{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:9px;border:1px solid rgba(255,255,255,.04);background:rgba(255,255,255,.018);text-decoration:none;color:inherit;position:relative;overflow:hidden;transition:background .2s;animation:fadein .5s both}
+.lnk{display:flex;align-items:center;gap:12px;padding:13px 14px;min-height:48px;border-radius:9px;border:1px solid rgba(255,255,255,.04);background:rgba(255,255,255,.018);text-decoration:none;color:inherit;position:relative;overflow:hidden;transition:background .2s;animation:fadein .5s both;-webkit-tap-highlight-color:transparent}
 .lnk::after{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:rgba(255,255,255,0);transition:background .2s}
 .lnk:hover{background:rgba(255,255,255,.04)}
 .lnk:hover::after{background:rgba(255,255,255,.35)}
@@ -97,7 +94,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opa
   </div>
   <div class="rule"></div>
   <div class="release-wrap">
-    <a class="release" href="https://open.spotify.com/artist/4XT9ICiuXxRo5BvhVPfLDF" target="_blank" rel="noopener">
+    <a class="release" href="https://open.spotify.com/album/4cDuzaMclJGxubrzcqwuNR" target="_blank" rel="noopener">
       <div class="rel-l">
         <div class="rel-eyebrow">Latest Release</div>
         <div class="rel-title">Check the Chat (Freestyle)</div>
@@ -109,10 +106,10 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opa
   <div class="grp">
     <div class="sec">Stream</div>
     <div class="links-stack">
-      <a class="lnk f0" href="https://open.spotify.com/artist/4XT9ICiuXxRo5BvhVPfLDF" target="_blank" rel="noopener"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.622.622 0 0 1-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.622.622 0 0 1-.277-1.215c3.809-.87 7.076-.496 9.712 1.115.294.18.387.563.207.857zm1.223-2.722a.779.779 0 0 1-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.779.779 0 0 1-.433-1.494c3.632-1.053 8.147-.543 11.206 1.33a.779.779 0 0 1 .264 1.073zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.935.935 0 0 1-.583-1.782c3.532-1.157 9.404-.933 13.115 1.338a.935.935 0 0 1-.916 1.6z"/></svg></div><div class="lnk-info"><div class="lnk-nm">Spotify</div></div><span class="lnk-caret">&#8250;</span></a>
-      <a class="lnk f1" href="https://music.apple.com/search?term=trilla+banks" target="_blank" rel="noopener"><div class="ico"><svg viewBox="0 0 24 24"><path d="M14.94 5.19A4.38 4.38 0 0 0 16 2a4.44 4.44 0 0 0-3 1.52 4.17 4.17 0 0 0-1 3.09 3.69 3.69 0 0 0 2.94-1.42zm2.52 7.44a4.51 4.51 0 0 1 2.16-3.81 4.66 4.66 0 0 0-3.66-2c-1.56-.16-3 .91-3.83.91s-2-.89-3.3-.87a4.92 4.92 0 0 0-4.14 2.53C2.89 11.9 3.7 16.22 5.6 18.87c.93 1.34 2 2.84 3.45 2.79s1.9-.89 3.56-.89 2.13.89 3.58.86 2.44-1.35 3.35-2.71a11 11 0 0 0 1.52-3.12 4.35 4.35 0 0 1-2.6-4.17z"/></svg></div><div class="lnk-info"><div class="lnk-nm">Apple Music</div></div><span class="lnk-caret">&#8250;</span></a>
+      <a class="lnk f0" href="https://open.spotify.com/artist/7qozPvnffK1rEbttrCtLyZ" target="_blank" rel="noopener"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.622.622 0 0 1-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.622.622 0 0 1-.277-1.215c3.809-.87 7.076-.496 9.712 1.115.294.18.387.563.207.857zm1.223-2.722a.779.779 0 0 1-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.779.779 0 0 1-.433-1.494c3.632-1.053 8.147-.543 11.206 1.33a.779.779 0 0 1 .264 1.073zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.935.935 0 0 1-.583-1.782c3.532-1.157 9.404-.933 13.115 1.338a.935.935 0 0 1-.916 1.6z"/></svg></div><div class="lnk-info"><div class="lnk-nm">Spotify</div></div><span class="lnk-caret">&#8250;</span></a>
+      <a class="lnk f1" href="https://music.apple.com/us/artist/trilla-banks/1543333341" target="_blank" rel="noopener"><div class="ico"><svg viewBox="0 0 24 24"><path d="M14.94 5.19A4.38 4.38 0 0 0 16 2a4.44 4.44 0 0 0-3 1.52 4.17 4.17 0 0 0-1 3.09 3.69 3.69 0 0 0 2.94-1.42zm2.52 7.44a4.51 4.51 0 0 1 2.16-3.81 4.66 4.66 0 0 0-3.66-2c-1.56-.16-3 .91-3.83.91s-2-.89-3.3-.87a4.92 4.92 0 0 0-4.14 2.53C2.89 11.9 3.7 16.22 5.6 18.87c.93 1.34 2 2.84 3.45 2.79s1.9-.89 3.56-.89 2.13.89 3.58.86 2.44-1.35 3.35-2.71a11 11 0 0 0 1.52-3.12 4.35 4.35 0 0 1-2.6-4.17z"/></svg></div><div class="lnk-info"><div class="lnk-nm">Apple Music</div></div><span class="lnk-caret">&#8250;</span></a>
       <a class="lnk f2" href="https://www.youtube.com/@trillabanks" target="_blank" rel="noopener"><div class="ico"><svg viewBox="0 0 24 24"><path d="M23.495 6.204a3.008 3.008 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507 0-9.396.501A3.007 3.007 0 0 0 .527 6.204a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.008 3.008 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg></div><div class="lnk-info"><div class="lnk-nm">YouTube</div></div><span class="lnk-caret">&#8250;</span></a>
-      <a class="lnk f3" href="https://soundcloud.com/trilla-banks" target="_blank" rel="noopener"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></div><div class="lnk-info"><div class="lnk-nm">SoundCloud</div></div><span class="lnk-caret">&#8250;</span></a>
+      <a class="lnk f3" href="https://soundcloud.com/trilla_banks" target="_blank" rel="noopener"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></div><div class="lnk-info"><div class="lnk-nm">SoundCloud</div></div><span class="lnk-caret">&#8250;</span></a>
     </div>
   </div>
   <div class="grp">
@@ -128,28 +125,21 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opa
 <script>
 const CHARS='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&@';
 const TARGET='TRILLA BANKS';
-const HIDDEN=[' New  Music ','   Out  Now ','Forever Trill'];
 const el=document.getElementById('nameEl');
-let cycle=0;
 function rnd(){return CHARS[Math.floor(Math.random()*CHARS.length)]}
 function scrambleFull(){return TARGET.split('').map(c=>c===' '?' ':rnd()).join('')}
 function runCycle(){
-  const msg=HIDDEN[cycle%HIDDEN.length];cycle++;
-  const P1=20,P2=10,P3=24;let f=0;
-  el.classList.remove('hidden-msg');
+  const P1=20,P2=24;let f=0;
   function tick(){
     if(f<P1){el.textContent=scrambleFull()}
-    else if(f===P1){el.textContent=msg;el.classList.add('hidden-msg')}
-    else if(f<P1+P2){/* hold */}
-    else if(f===P1+P2){el.classList.remove('hidden-msg');el.textContent=scrambleFull()}
-    else{const r=f-P1-P2,res=Math.floor((r/P3)*TARGET.length);el.textContent=TARGET.split('').map((c,i)=>c===' '?' ':i<res?c:rnd()).join('')}
+    else{const r=f-P1,res=Math.floor((r/P2)*TARGET.length);el.textContent=TARGET.split('').map((c,i)=>c===' '?' ':i<res?c:rnd()).join('')}
     f++;
-    if(f<P1+P2+P3)setTimeout(tick,48);
-    else{el.textContent=TARGET;el.classList.remove('hidden-msg');setTimeout(runCycle,7000)}
+    if(f<P1+P2)setTimeout(tick,48);
+    else{el.textContent=TARGET;setTimeout(runCycle,7000)}
   }
   tick();
 }
 setTimeout(runCycle,800);
 </script>
 </body>
-</html>
+                                                                                                                                                                 </html>
