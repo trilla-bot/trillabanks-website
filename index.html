@@ -42,7 +42,7 @@ body{
   background:#050505;
   background-image:url('https://i.ibb.co/3yPTfd2X/hero.jpg');
   background-size:cover;
-  background-position:center 55%;
+  background-position:38% 55%;
   background-repeat:no-repeat;
   animation:hero-fade 1.2s ease both;
 }
@@ -349,3 +349,15 @@ function runCycle(){
     f++;
     if(f<P1+P2)setTimeout(tick,48);
     else{el.textContent=TARGET;setTimeout(runCycle,7000)}
+
+  }
+  tick();
+}
+const observer=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting){runCycle()}});
+},{threshold:0.2});
+observer.observe(document.querySelector('.page'));
+setTimeout(runCycle,800);
+</script>
+</body>
+</html>
